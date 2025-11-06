@@ -1275,3 +1275,14 @@ class RiskManager:
 [8](https://www.reddit.com/r/options/comments/1h5ss52/i_developed_a_versatile_backtesting_tool_for_spx/)
 [9](https://www.codearmo.com/python-tutorial/getting-crypto-data-bybit)
 [10](https://greekslab.com/guide)
+
+## Реализация
+
+В репозитории находится минимально жизнеспособная реализация всех модулей, описанных в техническом задании. Для запуска демо-бэктеста требуется установить опциональные зависимости:
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+Тесты используют `pytest.importorskip`, поэтому при отсутствии `pandas` и `numpy` они помечаются как пропущенные, что позволяет запускать базовую проверку даже в офлайн-средах.

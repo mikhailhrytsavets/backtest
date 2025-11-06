@@ -1,0 +1,20 @@
+intraday_short_gamma:
+  entry_time: "09:00"
+  exit_time: "15:00"
+  max_dte: 3
+  delta_hedge_threshold: 0.2
+  capital_fraction: 0.25
+
+intraday_delta:
+  lookback: 20
+  threshold: 0.05
+  capital_fraction: 0.25
+
+positional_short_gamma:
+  max_dte: 30
+  rebalance_days: 5
+  capital_fraction: 0.25
+
+positional_delta:
+  trend_lookback: 50
+  capital_fraction: 0.25
