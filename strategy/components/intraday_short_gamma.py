@@ -27,7 +27,19 @@ class IntradayShortGamma(BaseStrategy):
             return []
 
         underlying_price = market_data["underlying_price"].iloc[-1]
-        idx = (options_chain["strike"] - underlying_price).abs().idxmin()
+
+        strike_column = "strike" if "strike" in options_chain.columns else None
+        if strike_column is None and "strike_price" in options_chain.columns:
+            strike_column = "strike_price"
+
+        if strike_column is None:
+            return []
+
+        strikes = pd.to_numeric(options_chain[strike_column], errors="coerce")
+        if strikes.isna().all():
+            return []
+
+        idx = (strikes - underlying_price).abs().idxmin()
         atm_option = options_chain.loc[idx]
         signal = TradeSignal(
             action="open",
